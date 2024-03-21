@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_carousel_widget/flutter_carousel_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:prestasiku/src/features/authentication/providers/auth_provider.dart';
 
 import '../../../components/competition_card.dart';
 import '../providers/carousel_provider.dart';
@@ -14,6 +15,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final competitions = ref.watch(competitionProvider);
     final carousels = ref.watch(carouselBannerProvider);
+    final auth = ref.watch(authStateChangesProvider);
 
     return Scaffold(
       backgroundColor: Color(0XFFF1F1F1),
@@ -46,7 +48,8 @@ class HomeScreen extends ConsumerWidget {
                   ),
                 ),
                 Text(
-                  'Dimas Andrian',
+                  // Firebase user
+                  auth.value!.displayName ?? 'Pengguna',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,
