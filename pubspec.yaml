@@ -7,13 +7,54 @@ environment:
   sdk: '>=3.2.4 <4.0.0'
 
 dependencies:
+  #  Firebase
+  firebase_core: ^2.26.0
+  cloud_firestore: ^4.15.7
+  firebase_auth: ^4.17.7
+  firebase_storage: ^11.6.9
+
   flutter:
     sdk: flutter
+
+  # Riverpod
+  flutter_riverpod: ^2.4.10
+  riverpod_annotation: ^2.3.4
+
+  # Widgets
+  introduction_screen: ^3.1.12
+  flutter_carousel_widget: ^2.2.0
+
+  # File support
+  flutter_svg: ^2.0.10+1
+
+  # Router
+  go_router: ^13.2.1
+
+  # Localization
+  intl: ^0.18.1
+
+
+  # Image picker
+  image_picker: ^1.0.7
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
   flutter_lints: ^2.0.0
+
+  # Build system for Dart code generation
+  build_runner: ^2.4.8
+ # Tool for building custom lint rules (A dependency for riverpod_lint)
+  custom_lint: ^0.6.2
+  # A code generator for Riverpod
+  riverpod_generator: ^2.3.11
+  # Dev tool for writing code with Riverpod
+  riverpod_lint: ^2.3.9
+
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/image/
