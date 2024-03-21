@@ -191,67 +191,6 @@ class HomeScreen extends ConsumerWidget {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        shape: const CircleBorder(),
-        onPressed: () {
-          // show dialogs to add competition
-          showDialog(context: context, builder: (context) => AlertDialog(
-            title: Text('Add Competition'),
-            content: Text('Add competition form here'),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text('Cancel'),
-              ),
-              TextButton(
-                onPressed: () {
-                  // add competition to firestore
-                  Navigator.pop(context);
-                },
-                child: Text('Add'),
-              ),
-            ],
-          ));
-        },
-        child: const Icon(
-          Icons.add_outlined,
-          size: 35,
-          color: Colors.white,
-        ),
-        backgroundColor: Color(0XFF165F23),
-        // circle
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        color: Color(0XFF165F23),
-        notchMargin: 10.0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: const [
-            IconButton(
-              icon: Icon(Icons.home_outlined, color: Colors.white),
-              onPressed: null,
-            ),
-            IconButton(
-              icon: Icon(Icons.dashboard_outlined, color: Colors.white),
-              onPressed: null,
-            ),
-            // margin
-            SizedBox(width: 50),
-            IconButton(
-              icon: Icon(Icons.bookmark_outline, color: Colors.white),
-              onPressed: null,
-            ),
-            IconButton(
-              icon: Icon(Icons.calendar_month_outlined, color: Colors.white),
-              onPressed: null,
-            )
-          ],
-        ),
-      ),
     );
   }
 }

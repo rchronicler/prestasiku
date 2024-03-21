@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Competition {
+  final String docId;
   final String imageUrl;
   final String title;
   final Timestamp deadline;
@@ -10,6 +11,7 @@ class Competition {
   final bool isFree;
 
   Competition({
+    required this.docId,
     required this.imageUrl,
     required this.title,
     required this.deadline,
@@ -21,6 +23,7 @@ class Competition {
 
   factory Competition.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> snapshot) {
     return Competition(
+      docId: snapshot.reference.id,
       imageUrl: snapshot.data()!['imageUrl'],
       title: snapshot.data()!['title'],
       deadline: snapshot.data()!['deadline'],
