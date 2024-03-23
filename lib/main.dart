@@ -41,6 +41,12 @@ void registerErrorHandlers() {
         backgroundColor: Colors.red,
         title: const Text('An error occured'),
       ),
+      body: Center(
+        child: Text(
+          'Error: ${details.exceptionAsString()}',
+          style: const TextStyle(color: Colors.red),
+        ),
+      )
     );
   };
 }

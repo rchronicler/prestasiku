@@ -15,7 +15,7 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final competitions = ref.watch(competitionProvider);
     final carousels = ref.watch(carouselBannerProvider);
-    final auth = ref.watch(authStateChangesProvider);
+    final user = ref.watch(currentUserProvider);
 
     return Scaffold(
       backgroundColor: Color(0XFFF1F1F1),
@@ -48,8 +48,7 @@ class HomeScreen extends ConsumerWidget {
                   ),
                 ),
                 Text(
-                  // Firebase user
-                  auth.value!.displayName ?? 'Pengguna',
+                  user?.displayName ?? 'Pengguna',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,

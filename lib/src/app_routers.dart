@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:prestasiku/src/features/calendar/presentations/calendar_screen.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import 'features/authentication/presentation/signup_screen.dart';
@@ -100,13 +101,18 @@ GoRouter appRouter(AppRouterRef ref) {
                 notchMargin: 10.0,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children:  [
+                  children: [
                     IconButton(
-                      icon: Icon(Icons.home_outlined, color: Colors.white),
-                      onPressed: () {
-                        GoRouter.of(context).go('/home');
-                      }
-                    ),
+                        icon: GoRouter.of(context)
+                                    .routeInformationProvider
+                                    .value
+                                    .uri.toString() ==
+                                '/home'
+                            ? Icon(Icons.home, color: Colors.white)
+                            : Icon(Icons.home_outlined, color: Colors.white),
+                        onPressed: () {
+                          GoRouter.of(context).go('/home');
+                        }),
                     IconButton(
                       icon: Icon(Icons.dashboard_outlined, color: Colors.white),
                       onPressed: null,
@@ -118,9 +124,17 @@ GoRouter appRouter(AppRouterRef ref) {
                       onPressed: null,
                     ),
                     IconButton(
-                      icon: Icon(Icons.calendar_month_outlined,
-                          color: Colors.white),
-                      onPressed: null,
+                      icon: GoRouter.of(context)
+                                  .routeInformationProvider
+                                  .value
+                                  .uri.toString() ==
+                              '/calendar'
+                          ? Icon(Icons.calendar_month, color: Colors.white)
+                          : Icon(Icons.calendar_month_outlined,
+                              color: Colors.white),
+                      onPressed: () {
+                        GoRouter.of(context).go('/calendar');
+                      },
                     )
                   ],
                 ),
@@ -143,8 +157,11 @@ GoRouter appRouter(AppRouterRef ref) {
                 builder: (context, state) {
                   final docId = state.pathParameters['docId'];
                   return DetailScreen(docId: '$docId');
-                }
-            ),
+                }),
+            GoRoute(
+              path: '/calendar',
+              builder: (context, state) => CalendarScreen(),
+            )
           ]),
     ],
   );
